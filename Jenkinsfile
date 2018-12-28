@@ -1,10 +1,8 @@
-pipeline{
+pipline{
     agent any
     stages{
         stage('Build'){
-            steps{
-                sh './gradlew build'
-            }
+            steps
         }
     }
 }
