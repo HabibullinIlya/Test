@@ -1,12 +1,13 @@
-pipline{
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
-                sh "echo BUILD"
-                sh "chmod +x"
+    stages {
+        stage('Build') {
+            steps {
+                sh "chmod +x gradlew"
+                sh "echo build"
                 sh "./gradlew build"
             }
         }
+
     }
 }
