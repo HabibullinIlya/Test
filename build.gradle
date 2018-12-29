@@ -39,6 +39,9 @@ compileTestKotlin {
 repositories {
 	mavenCentral()
 }
+bootJar {
+	launchScript()
+}
 
 configurations {
 	providedRuntime
