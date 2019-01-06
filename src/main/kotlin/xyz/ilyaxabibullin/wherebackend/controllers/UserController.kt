@@ -14,7 +14,7 @@ class UserController {
         val user = User()
         user.id = id
         user.nickname = "Nagibator228"
-        user.geo = "online"
+        user.geo = "hello from webhook i am on the way to ci/cd"
         return user
     }
 
