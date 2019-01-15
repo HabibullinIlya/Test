@@ -8,10 +8,10 @@ pipeline {
                 sh "./gradlew build"
             }
         }
-	stage('deploy to tomcat'){
+	stage('make image and run container '){
 	    steps{
-	         sh "cp ./build/libs/wherebackend.war /opt/tomcat/webapps"
-
+	         docker build -t habibullinilya/wherebackend .
+	         docker run -p 8085:8080 habibullinilya/wherebackend
 	    }
 	}
 
