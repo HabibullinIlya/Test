@@ -10,8 +10,8 @@ pipeline {
         }
 	stage('make image and run container '){
 	    steps{
-	         docker build -t habibullinilya/wherebackend .
-	         docker run -p 8085:8080 habibullinilya/wherebackend
+	        sh "docker build -t habibullinilya/wherebackend ."
+	        sh "docker run -p 8085:8080 habibullinilya/wherebackend"
 	    }
 	}
 
