@@ -22,7 +22,7 @@ pipeline {
 				
 		
 	   		}
-			}
+		}
 		stage('push image'){
 			steps{
 				
@@ -34,6 +34,7 @@ pipeline {
 			}	
 			}
 			
+			}
 		}
 		stage('deploy to k8s'){
 			steps{
@@ -42,12 +43,7 @@ pipeline {
 
 			}
 
-		}
-           	
-
-
-        }
-		}
-
-    }
+		}     
+	}
 }
+
