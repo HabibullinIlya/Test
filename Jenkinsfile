@@ -40,6 +40,8 @@ pipeline {
 			steps{
 				sh "kubectl run whereis --image=docker.io/habibullinilya/whereis --port=8080"
 				sh "kubectl get pods"
+				sh "kubectl expose deployments/whereis --type=NodePort --port 8080" 
+				sh "kubectl describe services/whereis"
 
 			}
 
