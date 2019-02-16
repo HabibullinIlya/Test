@@ -28,7 +28,7 @@ pipeline {
 				
 
 				script{
-				docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
+				docker.withRegistry('', 'dockerhub'){
 		   		app.push("0.1")
 		   		app.push("latest")	 
 			}	
