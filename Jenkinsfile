@@ -1,6 +1,18 @@
 pipeline {
     agent any
+
+    enviroment {
+        registry = "habibullunilya/whereis"
+	registryCredintal = 'dockerhub'
+
+    }
+	
     stages {
+
+	stage('clone repository'){
+            checkout scm
+	}
+
         stage('Build') {
             steps {
                 sh "chmod +x gradlew"
@@ -8,12 +20,23 @@ pipeline {
                 sh "./gradlew build"
             }
         }
-	stage('make image and run container '){
+	stage('build image'){
 	    steps{
-	        sh "docker build -t habibullinilya/wherebackend ."
-	        sh "docker run -p 8085:8080 -d habibullinilya/wherebackend"
+	        /*sh "docker build -t habibullinilya/wherebackend ."
+		sh "docker tag habibullinilya/wherebackend:v0.1 habibullinilya/whereis:v0.1"
+		sh "docker tag habibullinilya/whereis:v0.1"*/
+		app = docker.build("habibullinilya/whereis")
+		
 	    }
 	}
+	stage('push image'){
+                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
+		     app.push("{env.BUILD_NUMBER}")
+		     app.push("latest")	 
+		}
+
+
+        }
 
     }
 }
