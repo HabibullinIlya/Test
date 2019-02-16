@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    def buildNumber = System..getenv('BUILD_NUMBER')
     
 	
     stages {
@@ -25,9 +25,11 @@ pipeline {
 			}
 		stage('push image'){
 			steps{
+				sh "echo $buildNumber"
+
 				script{
 				docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-		   		app.push("{env.BUILD_NUMBER}")
+		   		app.push("0.1")
 		   		app.push("latest")	 
 			}	
 			}
