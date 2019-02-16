@@ -35,10 +35,19 @@ pipeline {
 			}
 			
 		}
+		stage('deploy to k8s'){
+			steps{
+				sh "kubectl run docker.com/habibullinilya/whereis --port=8080"
+				sh "kubectl get pods"
+
+			}
+
+		}
            	
 
 
         }
+		}
 
     }
 }
