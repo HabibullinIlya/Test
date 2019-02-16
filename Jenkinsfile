@@ -4,9 +4,6 @@ pipeline {
     
 	
     stages {
-
-		
-
         stage('Build') {
             steps {
                 sh "chmod +x gradlew"
@@ -27,11 +24,14 @@ pipeline {
 	   		}
 			}
 		stage('push image'){
-			script{
+			steps{
+				script{
 				docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
 		   		app.push("{env.BUILD_NUMBER}")
 		   		app.push("latest")	 
 			}	
+			}
+			
 		}
            	
 
