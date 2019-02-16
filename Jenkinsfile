@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('deploy to k8s'){
 			steps{
-				sh "kubectl run --image=docker.com/habibullinilya/whereis --port=8080"
+				sh "kubectl run whereis --image=docker.io/habibullinilya/whereis --port=8080"
 				sh "kubectl get pods"
 
 			}
