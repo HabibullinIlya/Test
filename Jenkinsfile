@@ -4,6 +4,23 @@ pipeline {
     
 	
     stages {
+	stage('groovy'){
+		steps{
+			script{
+				def k = 8
+                    if(k%2==0){
+                        echo k
+                    }
+				
+
+			}
+
+
+		}
+
+
+
+	}
         stage('Build') {
             steps {
                 sh "chmod +x gradlew"
@@ -13,7 +30,7 @@ pipeline {
         }
 		stage('build image'){
 	    	steps{
-	    		script{
+	   		script{
 	    			app = docker.build("habibullinilya/whereis")
 	    		}
 	        	/*sh "docker build -t habibullinilya/wherebackend ."
@@ -48,4 +65,5 @@ pipeline {
 		}     
 	}
 }
+
 
