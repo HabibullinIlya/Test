@@ -9,7 +9,7 @@ pipeline {
 			script{
 				def k = 8
                     if(k%2==0){
-                        echo k
+                        echo "$k"
                     }
 				
 
