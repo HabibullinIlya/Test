@@ -32,7 +32,7 @@ pipeline {
             steps {
 		script{
 		def projectName = "whereis"
-		def temp = sh "get deployments"
+		def temp = sh "kubectl get deployments"
 		echo "$temp"
                 if(temp!=projectName){
                     echo "get deployements ${temp}"
