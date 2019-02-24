@@ -33,14 +33,15 @@ pipeline {
 		script{
 		def projectName = "whereis"
 		def temp = sh "get deployments"
-		echo temp
+		echo "$temp"
                 if(temp!=projectName){
-                    echo "get deployements ${get deployments}"
+                    echo "get deployements ${temp}"
                     sh "kubectl run whereis --image=docker.io/habibullinilya/whereis --port=8080"
                     sh "kubectl get pods"
                     sh "kubectl expose deployments/whereis --type=NodePort --port 8080"
                     sh "kubectl describe services/whereis"
                 }else{
+		    echo "else"
                     sh "kubectl set image deployments/${projectName} ${projectName}=docker.io/habibullinilya/whereis"
                 }
 		}
