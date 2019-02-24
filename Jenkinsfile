@@ -33,7 +33,9 @@ pipeline {
         }
         stage('deploy to k8s') {
             steps {
-                if(sh "get deployments"!=projectName){
+		def temp = sh "get deployments"
+		echo temp
+                if(temp!=projectName){
                     echo "get deployements ${get deployments}"
                     sh "kubectl run whereis --image=docker.io/habibullinilya/whereis --port=8080"
                     sh "kubectl get pods"
