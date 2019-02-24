@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    enviroment{
-        def projectName = 'whereis'
-    }
     stages {
         stage('Build') {
             steps {
@@ -33,6 +30,8 @@ pipeline {
         }
         stage('deploy to k8s') {
             steps {
+		script{
+		def projectName = "whereis"
 		def temp = sh "get deployments"
 		echo temp
                 if(temp!=projectName){
@@ -44,6 +43,7 @@ pipeline {
                 }else{
                     sh "kubectl set image deployments/${projectName} ${projectName}=docker.io/habibullinilya/whereis"
                 }
+		}
 
 
             }
