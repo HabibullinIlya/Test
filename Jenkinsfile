@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     def projectName = "whereis"
-                    def isExist = sh("kubectl get deployments | grep whereis | wc -lgit", returnStdout: true)
+                    def isExist = sh(script:"kubectl get deployments | grep whereis | wc -lgit", returnStdout: true)
                     echo "$isExist"
                     if (isExist == 1) {
                         echo "get deployements ${temp}"
